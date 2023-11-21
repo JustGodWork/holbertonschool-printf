@@ -10,7 +10,7 @@
 int parse_char(char **buffer, va_list args, int *size)
 {
 	/* DEBUG PRINT */
-	printf("parse_char -> buffer = %s\n", *buffer);
+	printf("parse_char -> buffer = \"%s\"\n", *buffer);
 	/* Add char to buffer */
 	return char_add(buffer, (char)va_arg(args, int), size);
 }

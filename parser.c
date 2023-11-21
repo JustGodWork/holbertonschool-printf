@@ -21,12 +21,17 @@ int parser(const char *buffer, va_list args)
 		return (0);
 
 	/* DEBUG PRINT */
-	printf("parser -> buffer = %s\n", buffer);
+	printf("parser -> buffer = \"%s\"\n", buffer);
 
 	for (i = 0; buffer[i] != '\0'; i++)
 	{
 		/* DEBUG PRINT */
-		printf("parser -> Is flag = %d\n", is_flag(buffer[i], buffer[i + 1]));
+		printf(
+			"parser -> Is flag(%c, %c) = %s\n",
+			buffer[i], buffer[i + 1],
+			is_flag(buffer[i], buffer[i + 1]) == 1 ? "true" : "false"
+		);
+
 		if (is_flag(buffer[i], buffer[i + 1]))
 		{
 			handler = get_flag_handler(buffer[i + 1]);
@@ -41,17 +46,19 @@ int parser(const char *buffer, va_list args)
 
 		/* DEBUG PRINT */
 		printf("parser -> buffer[%d] = %c\n", i, buffer[i]);
+		printf("parser -> str[%d] = %c\n", size, str[size]);
 	}
 
+	/* adding null character to the end of the string */
+	str[size + 1] = '\0';
+
 	/* DEBUG PRINT */
-	printf("parser -> size = %d, str = %s\n", size, str);
+	printf("parser -> str[%d] = %c\n", size + 1, str[size + 1]);
+	printf("parser -> size = %d, str = \"%s\"\n", size, str);
+	printf("parser -> [STDOUT] -> \"%s\"\n", str);
 
 	/* print buffer to stdout */
-	_putchar('\n');
-	_putchar('\n');
 	print_str(str);
-	_putchar('\n');
-	_putchar('\n');
 
 	/* free memory */
 	free(str);
