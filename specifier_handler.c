@@ -2,23 +2,26 @@
 
 /**
  * get_specifier_handler - get specifier handler
- * @c: specifier to be checked
+ * @specifier: specifier to be checked
  * Return: pointer to specifier handler
- */
-int (*get_specifier_handler(char c))(char **buffer, va_list args, int *size)
+*/
+void (*get_specifier_handler(const char specifier))(va_list args, int *size)
 {
+	/* Initializing variables */
 	int i;
 	specifier_handler_s specifier_handler[] = {
-		{"c", parse_char},
-		{"s", parse_string},
-		{NULL, NULL}
+		{'c', parse_char},
+		{'s', parse_string},
+		{'%', parse_percent},
+		{'\0', NULL}
 	};
 
 	/* Search for matching specifier handler */
-	for (i = 0; specifier_handler[i].specifier != NULL; i++)
+	for (i = 0; specifier_handler[i].specifier != '\0'; i++)
 	{
 		/* in case of match return specifier handler */
-		if (specifier_handler[i].specifier[0] == c)
+		if (specifier_handler[i].specifier == specifier)
+			/* return specifier handler */
 			return (specifier_handler[i].call);
 	}
 
