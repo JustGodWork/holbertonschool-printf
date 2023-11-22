@@ -8,7 +8,6 @@
 
 #define is_specifier(c1, c2) (c1 == '%' && (c2 == 'c' || c2 == 's' || c2 == '%'))
 
-int _putchar(char c);
 int _strlen(const char *s);
 int char_add(char **buffer, char c, int *size);
 int _printf(const char *format, ...);
@@ -18,6 +17,7 @@ int (*get_specifier_handler(char c))(char **buffer, va_list args, int *size);
 
 int parse_char(char **buffer, va_list args, int *size);
 int parse_string(char **buffer, va_list args, int *size);
+int parse_percent(char **buffer, int *size);
 
 /**
  * struct specifier_handler - struct for specifier handler

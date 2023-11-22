@@ -5,7 +5,7 @@
  * @buffer: buffer to be parsed
  * @args: list of arguments
  * @size: size of the string
- * Return: 0 on success and -1 on fail
+ * Return: (0) success (-1) fail
 */
 int parse_string(char **buffer, va_list args, int *size)
 {
