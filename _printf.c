@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _printf - prints anything
+ * _printf - prints string to stdout with format
  * @format: list of argument types passed to the function
  * Return: number of characters printed
- */
+*/
 int _printf(const char *format, ...)
 {
 	int count = 0;
@@ -17,14 +17,14 @@ int _printf(const char *format, ...)
 
 	/* if format as no entry */
 	/* We don't need to handle all operations on it. */
-	if (_strlen(format) <= 0)
+	if (format[0] == '\0')
 		return (0);
 
 	/* initialize args to store all values after format */
 	va_start(args, format);
 
 	/* parse format and store all values in args */
-	count = parser(format, args);
+	parser(&count, format, args);
 
 	/* free memory allocated for args */
 	va_end(args);
