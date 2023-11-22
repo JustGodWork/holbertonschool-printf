@@ -10,15 +10,10 @@ int _printf(const char *format, ...)
 	int count = 0;
 	va_list args;
 
-	/* if format is NULL */
+	/* if format is NULL or format is % */
 	/* We don't need to handle all operations on it. */
-	if (format == NULL)
-		return (0);
-
-	/* if format as no entry */
-	/* We don't need to handle all operations on it. */
-	if (format[0] == '\0')
-		return (0);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 
 	/* initialize args to store all values after format */
 	va_start(args, format);
@@ -26,7 +21,7 @@ int _printf(const char *format, ...)
 	/* parse format and store all values in args */
 	parser(&count, format, args);
 
-	/* free memory allocated for args */
+	/* Mark args as visited */
 	va_end(args);
 
 	return (count);
