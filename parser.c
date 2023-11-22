@@ -1,76 +1,73 @@
 #include "main.h"
 
 /**
- * handle_specifier - parse formatted string
- * @specifier: specifier to be handled
- * @buffer: buffer to be parsed
- * @args: list of arguments
- * @size: size of buffer
- * Return: (0) success (-1) fail
- */
-int handle_specifier(char specifier, char **buffer, va_list args, int *size)
+ * is_specifier - check if character is a specifier
+ * @c: character to be checked
+ * @next: next character
+ * Return: 1 if true, 0 if false
+*/
+int is_specifier(char c, char next)
 {
-	int (*handler)(char **buffer, va_list args, int *size);
+	/* initializing variables */
+	int i;
+	char initializer = '%';
+	/* Adjustable specifiers list */
+	char *specifiers = "cs%";
 
-	if (specifier == '%')
-		return (parse_percent(buffer, size));
-
-	handler = get_specifier_handler(specifier);
-
-	if (handler == NULL || handler(buffer, args, size) == -1)
-		return (-1);
+	/* loop through specifiers */
+	for (i = 0; specifiers[i] != '\0'; i++)
+	{
+		/* if character is a specifier */
+		if (c == initializer && next == specifiers[i])
+			return (1);
+	}
 
 	return (0);
 }
 
 /**
  * parser - parse formatted string
+ * @count: number of characters printed
  * @buffer: buffer to be parsed
  * @args: list of arguments
- * Return: size of buffer
- */
-int parser(const char *buffer, va_list args)
+*/
+void parser(int *count, const char *buffer, va_list args)
 {
 	/* initializing variables  */
-	char *str;
-	int i = 0, size = 0;
+	int i = 0;
+	void (*handler)(va_list args, int *count);
 
-	/* allocating memory for str */
-	/* for now we will allocate only 1 byte for the \0 character*/
-	str = malloc(sizeof(char) * 1);
-
-	/* Return 0 if malloc fail */
-	if (str == NULL)
-		return (0);
-
+	/* loop through buffer */
 	for (i = 0; buffer[i] != '\0'; i++)
 	{
+		/* if % and char specifier found */
 		if (is_specifier(buffer[i], buffer[i + 1]))
 		{
-			if (handle_specifier(buffer[i + 1], &str, args, &size) == -1)
+			/* get handler for specifier */
+			handler = get_specifier_handler(buffer[i + 1]);
+
+			if (handler != NULL) /* if handler is found */
 			{
-				free(str);
-				return (0);
-			}
-			else
+				handler(args, count);
+				/* increment i to skip % and specifier */
 				i++;
+			}
+			else /* if handler is not found */
+			{
+				/* print % if no handler is found */
+				_putchar(buffer[i]);
+				/* print specifier if no handler is found */
+				_putchar(buffer[i + 1]);
+				/* increment count by 2 */
+				(*count) += 2;
+			}
 		}
 		else
-			if (char_add(&str, buffer[i], &size) == -1)
-			{
-				free(str);
-				return (0);
-			}
+		{
+			/* print character */
+			_putchar(buffer[i]);
+			/* increment count by 1 */
+			(*count)++;
+		}
 	}
-
-	/* adding null character to the end of the string */
-	str[size] = '\0';
-
-	/* print buffer to stdout */
-	print_str(str);
-
-	/* free memory */
-	free(str);
-
-	return (size);
 }
