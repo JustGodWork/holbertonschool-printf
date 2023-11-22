@@ -36,13 +36,19 @@ int parser(const char *buffer, va_list args)
 		{
 			handler = get_flag_handler(buffer[i + 1]);
 			if (handler == NULL || handler(&str, args, &size) == -1)
+			{
+				free(str);
 				return (0);
+			}
 			else
 				i++;
 		}
 		else
 			if (char_add(&str, buffer[i], &size) == -1)
+			{
+				free(str);
 				return (0);
+			}
 
 		/* DEBUG PRINT */
 		printf("parser -> buffer[%d] = %c\n", i, buffer[i]);
