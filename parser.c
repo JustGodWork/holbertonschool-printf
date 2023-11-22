@@ -7,7 +7,7 @@
  * @args: list of arguments
  * @size: size of buffer
  * Return: (0) success (-1) fail
-*/
+ */
 int handle_specifier(char specifier, char **buffer, va_list args, int *size)
 {
 	int (*handler)(char **buffer, va_list args, int *size);
@@ -28,7 +28,7 @@ int handle_specifier(char specifier, char **buffer, va_list args, int *size)
  * @buffer: buffer to be parsed
  * @args: list of arguments
  * Return: size of buffer
-*/
+ */
 int parser(const char *buffer, va_list args)
 {
 	/* initializing variables  */
