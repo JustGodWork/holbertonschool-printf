@@ -14,7 +14,8 @@ int handle_specifier(char specifier, char **buffer, va_list args, int *size)
 
 	if (specifier == '%')
 		return (parse_percent(buffer, size));
-	else {
+	else
+	{
 		handler = get_specifier_handler(specifier);
 		if (handler == NULL || handler(buffer, args, size) == -1)
 			return (-1);
@@ -27,6 +28,7 @@ int handle_specifier(char specifier, char **buffer, va_list args, int *size)
  * parser - parse formatted string
  * @buffer: buffer to be parsed
  * @args: list of arguments
+ * Return: size of buffer
 */
 int parser(const char *buffer, va_list args)
 {
