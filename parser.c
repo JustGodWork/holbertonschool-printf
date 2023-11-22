@@ -34,14 +34,27 @@ int parser(const char *buffer, va_list args)
 
 		if (is_specifier(buffer[i], buffer[i + 1]))
 		{
-			handler = get_specifier_handler(buffer[i + 1]);
-			if (handler == NULL || handler(&str, args, &size) == -1)
+			if (buffer[i + 1] == '%')
 			{
-				free(str);
-				return (0);
+				if (parse_percent(&str, &size) == -1)
+				{
+					free(str);
+					return (0);
+				}
+				else
+					i++;
 			}
 			else
-				i++;
+			{
+				handler = get_specifier_handler(buffer[i + 1]);
+				if (handler == NULL || handler(&str, args, &size) == -1)
+				{
+					free(str);
+					return (0);
+				}
+				else
+					i++;
+			}
 		}
 		else
 			if (char_add(&str, buffer[i], &size) == -1)
