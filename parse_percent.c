@@ -9,8 +9,8 @@
  */
 int parse_percent(char **buffer, va_list args, int *size)
 {
-	/* DEBUG PRINT */
-	printf("parse_char -> buffer = \"%s\"\n", *buffer);
+	/* DEBUG PRINT */ 
+	/*printf("parse_char -> buffer = \"%s\"\n", *buffer);*/
 	/* Add char to buffer */
 	return (char_add(buffer, '%', size));
 }
