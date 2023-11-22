@@ -2,7 +2,7 @@
 /**
  *  print_str - print all in string format
  *  @str: the string to print
- *  Return: (0) or (-1) if fail
+ *  Return: (0) success (-1) fail
  */
 int print_str(const char *str)
 {
