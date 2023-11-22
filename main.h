@@ -18,6 +18,7 @@ int (*get_specifier_handler(char c))(char **buffer, va_list args, int *size);
 
 int parse_char(char **buffer, va_list args, int *size);
 int parse_string(char **buffer, va_list args, int *size);
+int parse_percent(char **buffer, int *size);
 
 /**
  * struct specifier_handler - struct for specifier handler
