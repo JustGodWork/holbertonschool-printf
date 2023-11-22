@@ -14,12 +14,11 @@ int handle_specifier(char specifier, char **buffer, va_list args, int *size)
 
 	if (specifier == '%')
 		return (parse_percent(buffer, size));
-	else
-	{
-		handler = get_specifier_handler(specifier);
-		if (handler == NULL || handler(buffer, args, size) == -1)
-			return (-1);
-	}
+
+	handler = get_specifier_handler(specifier);
+
+	if (handler == NULL || handler(buffer, args, size) == -1)
+		return (-1);
 
 	return (0);
 }
