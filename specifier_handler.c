@@ -15,7 +15,6 @@ void (*get_specifier_handler(const char specifier))(va_list args, int *size)
 		{'%', parse_percent},
 		{'d', parse_integer},
 		{'i', parse_integer},
-	
 		{'\0', NULL}
 	};
 
