@@ -61,3 +61,62 @@ void parse_percent(va_list args, int *size)
 	/* Increment size by 1 */
 	(*size)++;
 }
+
+/**
+ * int_to_str - converts an int variable to a string
+ * @num: int variable to be converted
+ * Return: string
+*/
+char *int_to_str(int num)
+{
+	char *result;
+	int temp = num;
+	int is_negative = (num < 0);
+	int len = (num < 0) ? 2 : 1;
+
+	while (temp /= 10)
+	{
+		len++;
+	}
+
+	result = malloc(len + 1);
+
+	if (result == NULL)
+		return (NULL);
+
+	if (is_negative)
+	{
+		result[0] = '-';
+		num = -num;
+	}
+	result[len] = '\0';
+	while (len > is_negative)
+	{
+		len--;
+		result[len] = '0' + num % 10;
+		num /= 10;
+	}
+	return (result);
+}
+
+/**
+ * parse_integer - converts an int variable to a string and print it
+ * @args: list of arguments
+ * @size: size of buffer
+*/
+void parse_integer(va_list args, int *size)
+{
+	int i = 0;
+	int num;
+	char *str;
+
+	num = va_arg(args, int);
+	str = int_to_str(num);
+
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+		(*size)++;
+	}
+}

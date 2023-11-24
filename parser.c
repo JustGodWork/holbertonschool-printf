@@ -12,7 +12,7 @@ int is_specifier(char c, char next)
 	int i;
 	char initializer = '%';
 	/* Adjustable specifiers list */
-	char *specifiers = "cs%";
+	char *specifiers = "csdi%";
 
 	/* loop through specifiers */
 	for (i = 0; specifiers[i] != '\0'; i++)

@@ -21,6 +21,7 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 void parse_char(va_list args, int *size);
 void parse_string(va_list args, int *size);
+void parse_integer(va_list args, int *size);
 void parse_percent(va_list args, int *size);
 void parser(int *count, const char *buffer, va_list args);
 void (*get_specifier_handler(const char specifier))(va_list args, int *size);
