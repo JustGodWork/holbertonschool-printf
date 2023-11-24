@@ -62,8 +62,10 @@ void parse_percent(va_list args, int *size)
 	(*size)++;
 }
 
-/* int_to_str - converts an int variable to a string
+/**
+ * int_to_str - converts an int variable to a string
  * @num: int variable to be converted
+ * Return: string
 */
 char *int_to_str(int num)
 {
