@@ -2,7 +2,7 @@
 
 /**
  * parse_char - parse character
- * @args: list of arguments
+ * @args: list of args
  * @size: size of buffer
 */
 void parse_char(va_list args, int *size)
@@ -21,7 +21,7 @@ void parse_char(va_list args, int *size)
 
 /**
  * parse_string - parse string
- * @args: list of arguments
+ * @args: list of args
  * @size: size of the string
 */
 void parse_string(va_list args, int *size)
@@ -49,7 +49,7 @@ void parse_string(va_list args, int *size)
 
 /**
  * parse_percent - parse character
- * @args: list of arguments
+ * @args: list of args
  * @size: size of buffer
 */
 void parse_percent(va_list args, int *size)
@@ -62,61 +62,41 @@ void parse_percent(va_list args, int *size)
 	(*size)++;
 }
 
-/**
- * int_to_str - converts an int variable to a string
- * @num: int variable to be converted
- * Return: string
-*/
-char *int_to_str(int num)
-{
-	char *result;
-	int temp = num;
-	int is_negative = (num < 0);
-	int len = (num < 0) ? 2 : 1;
 
-	while (temp /= 10)
-	{
-		len++;
-	}
-
-	result = malloc(len + 1);
-
-	if (result == NULL)
-		return (NULL);
-
-	if (is_negative)
-	{
-		result[0] = '-';
-		num = -num;
-	}
-	result[len] = '\0';
-	while (len > is_negative)
-	{
-		len--;
-		result[len] = '0' + num % 10;
-		num /= 10;
-	}
-	return (result);
-}
 
 /**
  * parse_integer - converts an int variable to a string and print it
- * @args: list of arguments
+ * @args: list of args
  * @size: size of buffer
 */
 void parse_integer(va_list args, int *size)
 {
-	int i = 0;
-	int num;
-	char *str;
+	long int num = va_arg(args, int);
+	long int absolute_num = 0;
+	long int temp_num = absolute_num;
+	long int digit_index = 1;
 
-	num = va_arg(args, int);
-	str = int_to_str(num);
-
-	while (str[i] != '\0')
+	if (num < 0)
 	{
-		_putchar(str[i]);
-		i++;
+		absolute_num = (num * -1);
+		_putchar('-');
+		(*size)++;
+	}
+	else
+		absolute_num = num;
+
+	temp_num = absolute_num;
+
+	while (temp_num > 9)
+	{
+		temp_num = temp_num / 10;
+		digit_index = digit_index * 10;
+	}
+
+	while (digit_index >= 1)
+	{
+		_putchar(((absolute_num / digit_index) % 10) + '0');
+		digit_index = digit_index / 10;
 		(*size)++;
 	}
 }
