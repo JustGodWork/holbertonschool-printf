@@ -61,7 +61,7 @@ STDOUT output: "Hello 12".
 The \fB_printf\fP function is a variadic function and accepts a variable number of arguments.
 The first argument is a string that contains zero or more directives.
 The directives are used to determine how to format the subsequent arguments that are passed to the function.
-If there are insufficient arguments for the directives, the behavior is undefined. If the format string contains any format specifiers that are not supported by the function, the behavior is undefined.
+If there are insufficient arguments for the directives, function return (-1). If the format string contains any format specifiers that are not supported then function return (-1).
 
 .SH REPORTING BUGS
 .P
