@@ -87,14 +87,14 @@ Len:[12]
 
 | FILE | DESCRIPTION |
 | --------- | --------- |
-| _printf.c| Contains the main _printf function |
+| _printf.c| Contain the main _printf function |
 | _putchar.c | A function that print a single chararacter in the standard output |
-| handlers.c | Contain the the functions whitch corresponds to the specifier |
-| main.h| Containe libraries, structure and function prototypes |
+| handlers.c | Contain the functions whitch corresponds to the specifier |
+| main.h| Contain libraries, structure and function prototypes |
 | parser.c | the function that processes a specifier if it finds one |
-| specifier_handler.c | Contains the function which get the function whitch corresponds to the specifier |
+| specifier_handler.c | Contain the function which get the function whitch corresponds to the specifier |
 | man_3_printf | Man page of the _printf function|
-| resources | Containe the Flowcharts and the main function we use to test the program|
+| resources | Contain the Flowcharts and the main function we use to test the program|
 
 ## Authors
 
