@@ -71,7 +71,7 @@ int main(void)
 }
 ```
 **Output**
-```c
+```
 Let's try to printf a simple sentence.
 Let's try to printf an other one.
 Length:[34, 34]
