@@ -32,13 +32,13 @@ This project consists of a recodification of the `printf` function in the C lang
 
 Specifiers are used to define the display format of variables in the `_printf` function. Here is a list of the specifiers available in this code:
 
-| Spécificateur | Description                           |
+| Specifiers | Description                           |
 | ------------- | ------------------------------------- |
-| `%c`          | Imprime un caractère unique           |
-| `%s`          | Imprime une chaîne de caractères null-terminée |
-| `%%`          | Imprime un caractère '%' littéral     |
-| `%d`          | Imprime un nombre décimal             |
-| `%i`          | Imprime un nombre entier              |
+| `%c`          | Prints a single character           |
+| `%s`          | Print a null-terminated string |
+| `%%`          | Print a literal '%' character     |
+| `%d`          | Print a decimal number            |
+| `%i`          | Print an integer              |
 
 
 ## Exemples
@@ -88,13 +88,13 @@ Len:[12]
 | FILE | DESCRIPTION |
 | --------- | --------- |
 | _printf.c| Contains the main _printf function |
-| _putchar.c | A function that print a singl chararactere in the standard output |
+| _putchar.c | A function that print a single chararacter in the standard output |
 | handlers.c | Contain the the functions whitch corresponds to the specifier |
 | main.h| Containe libraries, structure and function prototypes |
 | parser.c | the function that processes a specifier if it finds one |
 | specifier_handler.c | Contains the function which get the function whitch corresponds to the specifier |
 | man_3_printf | Man page of the _printf function|
-| resources | Containe the Flowcharts and the main function we use to test the programe|
+| resources | Containe the Flowcharts and the main function we use to test the program|
 
 ## Authors
 
