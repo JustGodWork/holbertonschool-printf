@@ -26,7 +26,7 @@ This project consists of a recodification of the `printf` function in the C lang
 
 ## Flowcharts
 
-![Flowcharts](https://raw.githubusercontent.com/JustGodWork/holbertonschool-printf/main/flowchart.png)
+![Flowcharts](https://github.com/JustGodWork/holbertonschool-printf/blob/main/Resources/flowchart.png)
 
 ## Specifiers
 
